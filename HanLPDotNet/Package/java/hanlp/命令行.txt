@@ -1,0 +1,1 @@
+ .\ikvmc -target:library G:\MN测试Project\NetCore\第三方框架\IKVMConsole\IKVMConsole\Package\java\hanlp\hanlp-1.7.7.jar

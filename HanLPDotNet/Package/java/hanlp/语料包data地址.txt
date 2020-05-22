@@ -1,0 +1,3 @@
+https://file.hankcs.com/hanlp/data-for-1.7.5.zip  训练集Data下载后复制到Package\java\hanlp
+http://file.hankcs.com/corpus/ChnSentiCorp.zip 酒店评价训练集
+

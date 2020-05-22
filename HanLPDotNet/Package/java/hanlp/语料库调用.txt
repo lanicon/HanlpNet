@@ -1,0 +1,1 @@
+java -cp hanlp-1.7.7.jar com.hankcs.hanlp.mining.word2vec.Train -input hanlp-wiki-vec-zh.txt -output msr.txt
