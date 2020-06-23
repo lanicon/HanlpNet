@@ -1,5 +1,5 @@
 # HanlpNet
-HanLp的dotNet部分实现,利用IKVM 调用java 开发的hanlp.jar包
+HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
 强大的NLP轮子,目前在.net上暂无实现， 为方便.net使用HanLp使用收集生成1.7.7版本的dll工具类与使用demo合集（正在补充所有的demo）方便调用
 
 原作者地址:(https://github.com/hankcs/HanLP)
