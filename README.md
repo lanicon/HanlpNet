@@ -34,11 +34,11 @@ nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.
 ```
 标准分词(https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html)
 ``` 
-  		var termList = StandardTokenizer.segment("商品和服务");
+  	var termList = StandardTokenizer.segment("商品和服务");
 ```
 NLP分词
 ``` 
-  		var termList = NLPTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
+  	var termList = NLPTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
 ```
 索引分词
 ``` 
@@ -46,20 +46,20 @@ NLP分词
 ```
  N-最短路径分词(https://www.hankcs.com/nlp/segment/n-shortest-path-to-the-java-implementation-and-application-segmentation.html)
 ``` 
-   		 Segment nShortSegment = new NShortSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
-            Segment shortestSegment = new DijkstraSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
-            string[] testCase = new string[]{
+   	Segment nShortSegment = new NShortSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
+        Segment shortestSegment = new DijkstraSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
+        string[] testCase = new string[]{
         "今天，刘志军案的关键人物,山西女商人丁书苗在市二中院出庭受审。",
         "刘喜杰石国祥会见吴亚琴先进事迹报告团成员",
           };
-            foreach (var sentence in testCase)
+        foreach (var sentence in testCase)
             {
                 Console.WriteLine("N-最短分词：" + nShortSegment.seg(sentence) + "\n最短路分词：" + shortestSegment.seg(sentence));
             }
 ```
 CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-implementation.html)
 ``` 
-   			HanLP.Config.ShowTermNature = false;    // 关闭词性显示
+   	    HanLP.Config.ShowTermNature = false;    // 关闭词性显示
             Segment segment = new CRFSegment();
             String[] sentenceArray = new String[]
                     {
@@ -85,7 +85,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 ```
 极速 分词(https://www.hankcs.com/program/algorithm/aho-corasick-double-array-trie.html)
 ``` 
- 			 String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
+ 	    String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
             Console.WriteLine(SpeedTokenizer.segment(text));
 
             int pressure = 1000000;
@@ -106,7 +106,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
   词典的默认词性默认是名词n，可以通过配置文件修改：全国地名大全.txt ns; 如果词典路径后面空格紧接着词性，则该词典默认是该词性。
   关于用户词典的更多信息请参考词典说明一章。
 ```
- 			// 动态增加
+ 	    // 动态增加
             CustomDictionary.add("攻城狮");
             // 强行插入
             CustomDictionary.insert("白富美", "nz 1024");
@@ -156,8 +156,8 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 ```
 组织机构识别
 ```
-			string[] testCase = new string[]{
-               "我在上海林原科技有限公司兼职工作，",
+	   string[] testCase = new string[]{
+           "我在上海林原科技有限公司兼职工作，",
 	        "我经常在台川喜宴餐厅吃饭，",
 	        "偶尔去地中海影城看电影。",
 	        };
@@ -175,7 +175,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 ```
  短语识别（ https://www.hankcs.com/nlp/extraction-and-identification-of-mutual-information-about-the-phrase-based-on-information-entropy.html）
  ```
-	 		content = "算法工程师\n" +
+	 	content = "算法工程师\n" +
 	        "算法（Algorithm）是一系列解决问题的清晰指令，也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。" +
 	        "如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、" +
 	        "空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。算法工程师就是利用算法处理事物的人。\n" +
@@ -250,7 +250,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
  ```
  语义距离
  ```
-			 String[] wordArray = new String[]
+	   String[] wordArray = new String[]
 			               {
                         "香蕉",
                         "苹果",
@@ -287,7 +287,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 
 ```
-			CoNLLSentence sentence = HanLP.parseDependency(str);
+	    CoNLLSentence sentence = HanLP.parseDependency(str);
             Console.WriteLine(sentence);
             // 可以方便地遍历它
             foreach (CoNLLWord word in sentence)
@@ -297,7 +297,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 ```
 文本聚类
 ```
-			ClusterAnalyzer analyzer = new ClusterAnalyzer();
+	    ClusterAnalyzer analyzer = new ClusterAnalyzer();
             analyzer.addDocument("赵一", "流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 蓝调, 蓝调, 蓝调, 蓝调, 蓝调, 蓝调, 摇滚, 摇滚, 摇滚, 摇滚");
             analyzer.addDocument("钱二", "爵士, 爵士, 爵士, 爵士, 爵士, 爵士, 爵士, 爵士, 舞曲, 舞曲, 舞曲, 舞曲, 舞曲, 舞曲, 舞曲, 舞曲, 舞曲");
             analyzer.addDocument("张三", "古典, 古典, 古典, 古典, 民谣, 民谣, 民谣, 民谣");
@@ -316,7 +316,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 感知机词法分析器为例
  [上海/ns 华安/nz 工业/n （/w 集团/n ）/w 公司/n]/nt 董事长/n 谭旭光/nr 和/c 秘书/n 胡花蕊/nr 来到/v [美国/ns 纽约/ns 现代/t 艺术/n 博物馆/n]/ns 参观/v
 ```
- 			var analyzer = new PerceptronLexicalAnalyzer();
+ 	    var analyzer = new PerceptronLexicalAnalyzer();
             var sence = analyzer.analyze("上海华安工业（集团）公司董事长谭旭光和秘书胡花蕊来到美国纽约现代艺术博物馆参观");
 ```
  情感分析( http://file.hankcs.com/corpus/ChnSentiCorp.zip 下载后解压)
@@ -334,7 +334,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 
 停用词的使用教程
 ```
- 			var BasicTokenizer = new com.hankcs.hanlp.tokenizer.BasicTokenizer();
+	    var BasicTokenizer = new com.hankcs.hanlp.tokenizer.BasicTokenizer();
             var NotionalTokenizer = new com.hankcs.hanlp.tokenizer.NotionalTokenizer();
 
             var text = "小区居民有的反对喂养流浪猫，而有的居民却赞成喂养这些小宝贝";
@@ -362,7 +362,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 ```
 词性标注
 ```
- 			//未标注： [教授/nnt, 正在/d, 教授/nnt, 自然语言处理/nz, 课程/n]
+ 	    //未标注： [教授/nnt, 正在/d, 教授/nnt, 自然语言处理/nz, 课程/n]
             // 标注后： [教授/nnt, 正在/d, 教授/v, 自然语言处理/nz, 课程/n]
             var text = "教授正在教授自然语言处理课程";
             var segment = HanLP.newSegment();
@@ -372,7 +372,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 ```
 演示数词和数量词识别
 ```
-			 var sentences = new string[] {
+		var sentences = new string[] {
                 "十九元套餐包括什么",
                 "九千九百九十九朵玫瑰",
                 "壹佰块都不给我",
@@ -387,7 +387,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 ```
 演示词共现统计
 ```
-   			var occurrence = new Occurrence();
+            var occurrence = new Occurrence();
             occurrence.addAll("在计算机音视频和图形图像技术等二维信息算法处理方面目前比较先进的视频处理算法");
             occurrence.compute();
             var unigram = occurrence.getUniGram().ToList<TrieEntry>();
@@ -412,13 +412,13 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 ```
 基于AhoCorasickDoubleArrayTrie的分词器，该分词器允许用户跳过核心词典，直接使用自己的词典。
 ```
- 			// AhoCorasickDoubleArrayTrieSegment要求用户必须提供自己的词典路径
+            // AhoCorasickDoubleArrayTrieSegment要求用户必须提供自己的词典路径
             var segment = new AhoCorasickDoubleArrayTrieSegment().loadDictionary(com.hankcs.hanlp.HanLP.Config.CustomDictionaryPath[0]);
             print(segment.seg("微观经济学继续教育循环经济"));
 ```
 自定义停用词
 ```
-	   		bool Filter.shouldInclude(Term term)
+ 	    bool Filter.shouldInclude(Term term)
             {
                 if (term.nature.startsWith('m')) return true; // 数词保留
                 return !CoreStopWordDictionary.contains(term.word); // 停用词过滤
