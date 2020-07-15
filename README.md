@@ -97,17 +97,17 @@ nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.
                 SpeedTokenizer.segment(text);
             }
 ```
-  CustomDictionary是一份全局的用户自定义词典，可以随时增删，影响全部分词器。
-  CustomDictionary主词典文本路径是data/dictionary/custom/CustomDictionary.txt，
-  用户可以在此增加自己的词语（不推荐）；
-  也可以单独新建一个文本文件，
-  通过配置文件CustomDictionaryPath=data/dictionary/custom/CustomDictionary.txt; 
-  我的词典.txt;来追加词典（推荐）。
-  始终建议将相同词性的词语放到同一个词典文件里，便于维护和分享。
-  词典格式
-  每一行代表一个单词，格式遵从[单词][词性A][A的频次][词性B][B的频次] ... 如果不填词性则表示采用词典的默认词性。
-  词典的默认词性默认是名词n，可以通过配置文件修改：全国地名大全.txt ns; 如果词典路径后面空格紧接着词性，则该词典默认是该词性。
-  关于用户词典的更多信息请参考词典说明一章。
+-  CustomDictionary是一份全局的用户自定义词典，可以随时增删，影响全部分词器。
+-  CustomDictionary主词典文本路径是data/dictionary/custom/CustomDictionary.txt，
+-  用户可以在此增加自己的词语（不推荐）；
+-  也可以单独新建一个文本文件，
+-  通过配置文件CustomDictionaryPath=data/dictionary/custom/CustomDictionary.txt; 
+-  我的词典.txt;来追加词典（推荐）。
+-  始终建议将相同词性的词语放到同一个词典文件里，便于维护和分享。
+-  词典格式
+-  每一行代表一个单词，格式遵从[单词][词性A][A的频次][词性B][B的频次] ... 如果不填词性则表示采用词典的默认词性。
+-   词典的默认词性默认是名词n，可以通过配置文件修改：全国地名大全.txt ns; 如果词典路径后面空格紧接着词性，则该词典默认是该词性。
+-  关于用户词典的更多信息请参考词典说明一章。
 ```
  	    // 动态增加
             CustomDictionary.add("攻城狮");
@@ -217,7 +217,7 @@ nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.
             Console.WriteLine(HanLP.convertToTraditionalChinese("用笔记本电脑写程序"));
             Console.WriteLine(HanLP.convertToSimplifiedChinese("「以後等妳當上皇后，就能買士多啤梨慶祝了」"));
 ```
- 提取关键字与摘要
+- 提取关键字与摘要
  ```
             var content = "商品和服务,";
             content += "结婚的和尚未结婚的确实在干扰分词啊,";
