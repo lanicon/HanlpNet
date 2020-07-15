@@ -11,7 +11,7 @@ HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
 
 面向生产环境的多语种自然语言处理工具包，基于 TensorFlow 2.0，目标是普及落地最前沿的NLP技术。HanLP具备功能完善、性能高效、架构清晰、语料时新、可自定义的特点。内部算法经过工业界和学术界考验，配套书籍[《自然语言处理入门》](http://nlp.hankcs.com/book.php)已经出版。目前，基于深度学习的HanLP 2.0正处于alpha测试阶段，未来将实现知识图谱、问答系统、自动摘要、文本语义相似度、指代消解、三元组抽取、实体链接等功能。欢迎加入[蝴蝶效应](https://bbs.hankcs.com/)参与讨论，或者反馈bug和功能请求到[issue区](https://github.com/hankcs/HanLP/issues)。Java用户请使用[1.x分支](https://github.com/hankcs/HanLP/tree/1.x) ，经典稳定，永久维护。RESTful API正在开发中，2.0正式版将支持包括Java、Python在内的开发语言。
 
- ## .net 初次食用注意事项：**Note**:
+ ## **note**:.net 初次食用注意事项：
 
 首次运行缺少dll 请在 HanLP\HanLPDotNet\Package\java\hanlp   加载hanlp-1.7.7.dll（由hanlp-1.7.7转化获得）
 nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.Core.dll，IKVM.OpenJDK.Text.dll，IKVM.OpenJDK.Util.dll，IKVM.Runtime.dll
@@ -26,28 +26,28 @@ nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.
 
 ``` 
          
-            var nlpDemo = new HanLPHelper(@"XXXX\HanLPDotNet\Package\java\hanlp");
-            nlpDemo.Segement("吃葡萄不吐葡萄皮，你好啊");
-            //nlpDemo.Segement_Standard();
-            //nlpDemo.Segement_NLP();
-            //nlpDemo.Segement_Index
-            //nlpDemo.demo_use_AhoCorasickDoubleArrayTrieSegment();
-            Console.Read();
+	var nlpDemo = new HanLPHelper(@"XXXX\HanLPDotNet\Package\java\hanlp");
+	nlpDemo.Segement("吃葡萄不吐葡萄皮，你好啊");
+	//nlpDemo.Segement_Standard();
+	//nlpDemo.Segement_NLP();
+	//nlpDemo.Segement_Index
+	//nlpDemo.demo_use_AhoCorasickDoubleArrayTrieSegment();
+	Console.Read();
 
 ```
-标准分词(https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html)
+- 标准分词(https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html)
 ``` 
   	var termList = StandardTokenizer.segment("商品和服务");
 ```
-NLP分词
+- NLP分词
 ``` 
   	var termList = NLPTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
 ```
-索引分词
+- 索引分词
 ``` 
     	var termList = IndexTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
 ```
- N-最短路径分词(https://www.hankcs.com/nlp/segment/n-shortest-path-to-the-java-implementation-and-application-segmentation.html)
+- N-最短路径分词(https://www.hankcs.com/nlp/segment/n-shortest-path-to-the-java-implementation-and-application-segmentation.html)
 ``` 
    	Segment nShortSegment = new NShortSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
         Segment shortestSegment = new DijkstraSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
@@ -60,7 +60,7 @@ NLP分词
                 Console.WriteLine("N-最短分词：" + nShortSegment.seg(sentence) + "\n最短路分词：" + shortestSegment.seg(sentence));
             }
 ```
-CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-implementation.html)
+- CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-implementation.html)
 ``` 
    	    HanLP.Config.ShowTermNature = false;    // 关闭词性显示
             Segment segment = new CRFSegment();
@@ -69,7 +69,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
                         "HanLP是由一系列模型与算法组成的Java工具包，目标是普及自然语言处理在生产环境中的应用。",
                         "鐵桿部隊憤怒情緒集結 馬英九腹背受敵",           // 繁体无压力
                         "馬英九回應連勝文“丐幫說”：稱黨內同志談話應謹慎",
-                        "高锰酸钾，强氧化剂，紫红色晶体，可溶于水，遇乙醇即被还原。常用作消毒剂、水净化剂、氧化剂、漂白剂、毒气吸收剂、二氧化碳精制剂等。", // 专业名词有一定辨识能力
+                        "高锰酸钾，强氧化剂，紫红色晶体，可溶于水，遇乙醇即被还原。常用作消毒剂、水净化剂、氧化剂、漂白剂、毒			    气吸收剂、二氧化碳精制剂等。", // 专业名词有一定辨识能力
                         "《夜晚的骰子》通过描述浅草的舞女在暗夜中扔骰子的情景,寄托了作者对庶民生活区的情感",    // 非新闻语料
                         "这个像是真的[委屈]前面那个打扮太江户了，一点不上品...@hankcs",                       // 微博
                         "鼎泰丰的小笼一点味道也没有...每样都淡淡的...淡淡的，哪有食堂2A的好次",
@@ -86,7 +86,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
                 Console.WriteLine(termList);
             }
 ```
-极速 分词(https://www.hankcs.com/program/algorithm/aho-corasick-double-array-trie.html)
+- 极速 分词(https://www.hankcs.com/program/algorithm/aho-corasick-double-array-trie.html)
 ``` 
  	    String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
             Console.WriteLine(SpeedTokenizer.segment(text));
@@ -139,7 +139,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
             // 目前CustomDictionary使用DAT储存词典文件中的词语，用BinTrie储存动态加入的词语，前者性能高，后者性能低
             // 之所以保留动态增删功能，一方面是历史遗留特性，另一方面是调试用；未来可能会去掉动态增删特性。
 ```
-中国人名识别(https://www.hankcs.com/nlp/chinese-name-recognition-in-actual-hmm-viterbi-role-labeling.html)
+- 中国人名识别(https://www.hankcs.com/nlp/chinese-name-recognition-in-actual-hmm-viterbi-role-labeling.html)
 ```
 			string[] testCase = new string[]{
 	        "签约仪式前，秦光荣、李纪恒、仇和等一同会见了参加签约的企业家。",
@@ -157,7 +157,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
                 Console.WriteLine(termList);
             }
 ```
-组织机构识别
+- 组织机构识别
 ```
 	   string[] testCase = new string[]{
            "我在上海林原科技有限公司兼职工作，",
@@ -171,12 +171,12 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
                 Console.WriteLine(termList);
             }
 ```
-关键字提取（https://www.hankcs.com/nlp/textrank-algorithm-to-extract-the-keywords-java-implementation.html）
+- 关键字提取（https://www.hankcs.com/nlp/textrank-algorithm-to-extract-the-keywords-java-implementation.html）
 ```
  			content = "程序员(英文Programmer)是从事程序开发、维护的专业人员。一般将程序员分为程序设计人员和程序编码人员，但两者的界限并不非常清楚，特别是在中国。软件从业人员分为初级程序员、高级程序员、系统分析员和项目经理四大类。";
             var keywordList = HanLP.extractKeyword(content, 5);
 ```
- 短语识别（ https://www.hankcs.com/nlp/extraction-and-identification-of-mutual-information-about-the-phrase-based-on-information-entropy.html）
+-  短语识别（ https://www.hankcs.com/nlp/extraction-and-identification-of-mutual-information-about-the-phrase-based-on-information-entropy.html）
  ```
 	 	content = "算法工程师\n" +
 	        "算法（Algorithm）是一系列解决问题的清晰指令，也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。" +
@@ -206,13 +206,13 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 	        "算法工程师逐渐往人工智能方向发展。";
             var phraseList = HanLP.extractPhrase(content, 5).ToList();
  ```
-拼音转换(https://www.hankcs.com/nlp/java-chinese-characters-to-pinyin-and-simplified-conversion-realization.html#h2-17)
+- 拼音转换(https://www.hankcs.com/nlp/java-chinese-characters-to-pinyin-and-simplified-conversion-realization.html#h2-17)
 
 ```
             String text = "重载不是重任";
             List<Pinyin> pinyinList = HanLP.convertToPinyinList(text).ToList<Pinyin>();
 ```
-简繁转换(https://www.hankcs.com/nlp/java-chinese-characters-to-pinyin-and-simplified-conversion-realization.html#h2-17)
+- 简繁转换(https://www.hankcs.com/nlp/java-chinese-characters-to-pinyin-and-simplified-conversion-realization.html#h2-17)
 ```
             Console.WriteLine(HanLP.convertToTraditionalChinese("用笔记本电脑写程序"));
             Console.WriteLine(HanLP.convertToSimplifiedChinese("「以後等妳當上皇后，就能買士多啤梨慶祝了」"));
@@ -232,7 +232,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
             Console.WriteLine(HanLP.extractSummary(content, 2));
             Console.WriteLine(HanLP.parseDependency("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标。"));
  ```
- 文本推荐(句子级别，从一系列句子中挑出与输入句子最相似的那一个)
+-  文本推荐(句子级别，从一系列句子中挑出与输入句子最相似的那一个)
  ```
             Suggester suggester = new Suggester();
             string[] titleArray =
@@ -251,7 +251,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
             Console.WriteLine(suggester.suggest("危机公共", 1));   // 字符
             Console.WriteLine(suggester.suggest("mayun", 1));      // 拼音
  ```
- 语义距离
+-  语义距离
  ```
 	   String[] wordArray = new String[]
 			               {
@@ -286,7 +286,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 	                }
 	            }
  ```
-依存句法分析
+- 依存句法分析
 https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 
 ```
@@ -298,7 +298,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
                 Console.WriteLine($"{word.LEMMA} --({word.DEPREL})--> {word.HEAD.LEMMA}\n");
             }
 ```
-文本聚类
+- 文本聚类
 ```
 	    ClusterAnalyzer analyzer = new ClusterAnalyzer();
             analyzer.addDocument("赵一", "流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 流行, 蓝调, 蓝调, 蓝调, 蓝调, 蓝调, 蓝调, 摇滚, 摇滚, 摇滚, 摇滚");
@@ -316,7 +316,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
             var repeated1 = analyzer.repeatedBisection(1.0);  //自动判断聚类数量k
             var result = repeated1.ToList();
 ```
-感知机词法分析器为例
+- 感知机词法分析器为例
  [上海/ns 华安/nz 工业/n （/w 集团/n ）/w 公司/n]/nt 董事长/n 谭旭光/nr 和/c 秘书/n 胡花蕊/nr 来到/v [美国/ns 纽约/ns 现代/t 艺术/n 博物馆/n]/ns 参观/v
 ```
  	    var analyzer = new PerceptronLexicalAnalyzer();
@@ -335,7 +335,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
             result = classifier.predict("可利用文本分类实现情感分析，效果不是不行");
  ```
 
-停用词的使用教程
+- 停用词的使用教程
 ```
 	    var BasicTokenizer = new com.hankcs.hanlp.tokenizer.BasicTokenizer();
             var NotionalTokenizer = new com.hankcs.hanlp.tokenizer.NotionalTokenizer();
@@ -358,12 +358,12 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
             CoreStopWordDictionary.FILTER = MyFilter;
             print(NotionalTokenizer.segment("数字123的保留"));
 ```
-同义词改写(此点子可以使同义词词典将一律段文本改写成意思相似之另一样段落文本，而且多符合语法)
+- 同义词改写(此点子可以使同义词词典将一律段文本改写成意思相似之另一样段落文本，而且多符合语法)
 ```
 			var text = "这个方法可以利用同义词词典将一段文本改写成意思相似的另一段文本，而且差不多符合语法";
             print(CoreSynonymDictionary.rewrite(text));
 ```
-词性标注
+- 词性标注
 ```
  	    //未标注： [教授/nnt, 正在/d, 教授/nnt, 自然语言处理/nz, 课程/n]
             // 标注后： [教授/nnt, 正在/d, 教授/v, 自然语言处理/nz, 课程/n]
@@ -373,7 +373,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
             segment.enablePartOfSpeechTagging(true);
             print("标注后：", segment.seg(text));
 ```
-演示数词和数量词识别
+- 演示数词和数量词识别
 ```
 		var sentences = new string[] {
                 "十九元套餐包括什么",
@@ -388,7 +388,7 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
                 print(StandardTokenizer.segment(sentence));
             }
 ```
-演示词共现统计
+- 演示词共现统计
 ```
             var occurrence = new Occurrence();
             occurrence.addAll("在计算机音视频和图形图像技术等二维信息算法处理方面目前比较先进的视频处理算法");
@@ -413,13 +413,13 @@ https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
 
             }
 ```
-基于AhoCorasickDoubleArrayTrie的分词器，该分词器允许用户跳过核心词典，直接使用自己的词典。
+- 基于AhoCorasickDoubleArrayTrie的分词器，该分词器允许用户跳过核心词典，直接使用自己的词典。
 ```
             // AhoCorasickDoubleArrayTrieSegment要求用户必须提供自己的词典路径
             var segment = new AhoCorasickDoubleArrayTrieSegment().loadDictionary(com.hankcs.hanlp.HanLP.Config.CustomDictionaryPath[0]);
             print(segment.seg("微观经济学继续教育循环经济"));
 ```
-自定义停用词
+- 自定义停用词
 ```
  	    bool Filter.shouldInclude(Term term)
             {
