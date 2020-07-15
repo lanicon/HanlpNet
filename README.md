@@ -13,13 +13,13 @@ HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
 
  ## .net 初次食用注意事项：
 
-# 首次运行缺少dll 请在 HanLP\HanLPDotNet\Package\java\hanlp   加载hanlp-1.7.7.dll（由hanlp-1.7.7转化获得）
-# nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.Core.dll，IKVM.OpenJDK.Text.dll，IKVM.OpenJDK.Util.dll，IKVM.Runtime.dll
+首次运行缺少dll 请在 HanLP\HanLPDotNet\Package\java\hanlp   加载hanlp-1.7.7.dll（由hanlp-1.7.7转化获得）
+nuget获取的IKVM.OpenJDK 如果出现版本不匹配 尝试加载IKVM.OpenJDK.Core.dll，IKVM.OpenJDK.Text.dll，IKVM.OpenJDK.Util.dll，IKVM.Runtime.dll
             
-# 1.1首次运行需要下载语料库 https://file.hankcs.com/hanlp/data-for-1.7.5.zip  
-# 1.2酒店评论情绪分析训练库 http://file.hankcs.com/corpus/ChnSentiCorp.zip
-# 2.配置hanlp语料库文件夹，并配置hanlp.properties文件 root=XXXXX/Package/java/hanlp
-# 3.如出现缺少dll将ikvmbin-8.1.5717.0.rar 中相关的openjdk dll复制到bin中
+1.1首次运行需要下载语料库 (https://file.hankcs.com/hanlp/data-for-1.7.5.zip ) 
+1.2酒店评论情绪分析训练库 (http://file.hankcs.com/corpus/ChnSentiCorp.zip)
+2.配置hanlp语料库文件夹，并配置hanlp.properties文件 root=XXXXX/Package/java/hanlp
+3.如出现缺少dll将ikvmbin-8.1.5717.0.rar 中相关的openjdk dll复制到bin中
 
 ``` 
          
@@ -34,19 +34,19 @@ HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
 ```
 标准分词(https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html)
 ``` 
-  var termList = StandardTokenizer.segment("商品和服务");
+  		var termList = StandardTokenizer.segment("商品和服务");
 ```
 NLP分词
 ``` 
-  var termList = NLPTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
+  		var termList = NLPTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
 ```
 索引分词
 ``` 
-    var termList = IndexTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
+    	var termList = IndexTokenizer.segment("中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程");
 ```
  N-最短路径分词(https://www.hankcs.com/nlp/segment/n-shortest-path-to-the-java-implementation-and-application-segmentation.html)
 ``` 
-    Segment nShortSegment = new NShortSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
+   		 Segment nShortSegment = new NShortSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
             Segment shortestSegment = new DijkstraSegment().enableCustomDictionary(false).enablePlaceRecognize(true).enableOrganizationRecognize(true);
             string[] testCase = new string[]{
         "今天，刘志军案的关键人物,山西女商人丁书苗在市二中院出庭受审。",
@@ -59,7 +59,7 @@ NLP分词
 ```
 CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-implementation.html)
 ``` 
-    HanLP.Config.ShowTermNature = false;    // 关闭词性显示
+   			HanLP.Config.ShowTermNature = false;    // 关闭词性显示
             Segment segment = new CRFSegment();
             String[] sentenceArray = new String[]
                     {
@@ -85,7 +85,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 ```
 极速 分词(https://www.hankcs.com/program/algorithm/aho-corasick-double-array-trie.html)
 ``` 
-  String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
+ 			 String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
             Console.WriteLine(SpeedTokenizer.segment(text));
 
             int pressure = 1000000;
@@ -106,7 +106,7 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
   词典的默认词性默认是名词n，可以通过配置文件修改：全国地名大全.txt ns; 如果词典路径后面空格紧接着词性，则该词典默认是该词性。
   关于用户词典的更多信息请参考词典说明一章。
 ```
- // 动态增加
+ 			// 动态增加
             CustomDictionary.add("攻城狮");
             // 强行插入
             CustomDictionary.insert("白富美", "nz 1024");
@@ -138,15 +138,15 @@ CRF 分词(https://www.hankcs.com/nlp/segment/crf-segmentation-of-the-pure-java-
 ```
 中国人名识别(https://www.hankcs.com/nlp/chinese-name-recognition-in-actual-hmm-viterbi-role-labeling.html)
 ```
-string[] testCase = new string[]{
-        "签约仪式前，秦光荣、李纪恒、仇和等一同会见了参加签约的企业家。",
-        "王国强、高峰、汪洋、张朝阳光着头、韩寒、小四",
-        "张浩和胡健康复员回家了",
-        "王总和小丽结婚了",
-        "编剧邵钧林和稽道青说",
-        "这里有关天培的有关事迹",
-        "龚学平等领导,邓颖超生前",
-        };
+			string[] testCase = new string[]{
+	        "签约仪式前，秦光荣、李纪恒、仇和等一同会见了参加签约的企业家。",
+	        "王国强、高峰、汪洋、张朝阳光着头、韩寒、小四",
+	        "张浩和胡健康复员回家了",
+	        "王总和小丽结婚了",
+	        "编剧邵钧林和稽道青说",
+	        "这里有关天培的有关事迹",
+	        "龚学平等领导,邓颖超生前",
+	        };
             Segment segment = HanLP.newSegment().enableNameRecognize(true);
             foreach (string sentence in testCase)
             {
@@ -156,11 +156,11 @@ string[] testCase = new string[]{
 ```
 组织机构识别
 ```
-string[] testCase = new string[]{
+			string[] testCase = new string[]{
                "我在上海林原科技有限公司兼职工作，",
-        "我经常在台川喜宴餐厅吃饭，",
-        "偶尔去地中海影城看电影。",
-        };
+	        "我经常在台川喜宴餐厅吃饭，",
+	        "偶尔去地中海影城看电影。",
+	        };
             Segment segment = HanLP.newSegment().enableOrganizationRecognize(true);
             foreach (var sentence in testCase)
             {
@@ -170,37 +170,37 @@ string[] testCase = new string[]{
 ```
 关键字提取（https://www.hankcs.com/nlp/textrank-algorithm-to-extract-the-keywords-java-implementation.html）
 ```
- content = "程序员(英文Programmer)是从事程序开发、维护的专业人员。一般将程序员分为程序设计人员和程序编码人员，但两者的界限并不非常清楚，特别是在中国。软件从业人员分为初级程序员、高级程序员、系统分析员和项目经理四大类。";
+ 			content = "程序员(英文Programmer)是从事程序开发、维护的专业人员。一般将程序员分为程序设计人员和程序编码人员，但两者的界限并不非常清楚，特别是在中国。软件从业人员分为初级程序员、高级程序员、系统分析员和项目经理四大类。";
             var keywordList = HanLP.extractKeyword(content, 5);
 ```
  短语识别（ https://www.hankcs.com/nlp/extraction-and-identification-of-mutual-information-about-the-phrase-based-on-information-entropy.html）
  ```
- content = "算法工程师\n" +
-        "算法（Algorithm）是一系列解决问题的清晰指令，也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。" +
-        "如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、" +
-        "空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。算法工程师就是利用算法处理事物的人。\n" +
-        "\n" +
-        "1职位简介\n" +
-        "算法工程师是一个非常高端的职位；\n" +
-        "专业要求：计算机、电子、通信、数学等相关专业；\n" +
-        "学历要求：本科及其以上的学历，大多数是硕士学历及其以上；\n" +
-        "语言要求：英语要求是熟练，基本上能阅读国外专业书刊；\n" +
-        "必须掌握计算机相关知识，熟练使用仿真工具MATLAB等，必须会一门编程语言。\n" +
-        "\n" +
-        "2研究方向\n" +
-        "视频算法工程师、图像处理算法工程师、音频算法工程师 通信基带算法工程师\n" +
-        "\n" +
-        "3目前国内外状况\n" +
-        "目前国内从事算法研究的工程师不少，但是高级算法工程师却很少，是一个非常紧缺的专业工程师。" +
-        "算法工程师根据研究领域来分主要有音频/视频算法处理、图像技术方面的二维信息算法处理和通信物理层、" +
-        "雷达信号处理、生物医学信号处理等领域的一维信息算法处理。\n" +
-        "在计算机音视频和图形图像技术等二维信息算法处理方面目前比较先进的视频处理算法：机器视觉成为此类算法研究的核心；" +
-        "另外还有2D转3D算法(2D-to-3D conversion)，去隔行算法(de-interlacing)，运动估计运动补偿算法" +
-        "(Motion estimation/Motion Compensation)，去噪算法(Noise Reduction)，缩放算法(scaling)，" +
-        "锐化处理算法(Sharpness)，超分辨率算法(Super Resolution),手势识别(gesture recognition),人脸识别(face recognition)。\n" +
-        "在通信物理层等一维信息领域目前常用的算法：无线领域的RRM、RTT，传送领域的调制解调、信道均衡、信号检测、网络优化、信号分解等。\n" +
-        "另外数据挖掘、互联网搜索算法也成为当今的热门方向。\n" +
-        "算法工程师逐渐往人工智能方向发展。";
+	 		content = "算法工程师\n" +
+	        "算法（Algorithm）是一系列解决问题的清晰指令，也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。" +
+	        "如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、" +
+	        "空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。算法工程师就是利用算法处理事物的人。\n" +
+	        "\n" +
+	        "1职位简介\n" +
+	        "算法工程师是一个非常高端的职位；\n" +
+	        "专业要求：计算机、电子、通信、数学等相关专业；\n" +
+	        "学历要求：本科及其以上的学历，大多数是硕士学历及其以上；\n" +
+	        "语言要求：英语要求是熟练，基本上能阅读国外专业书刊；\n" +
+	        "必须掌握计算机相关知识，熟练使用仿真工具MATLAB等，必须会一门编程语言。\n" +
+	        "\n" +
+	        "2研究方向\n" +
+	        "视频算法工程师、图像处理算法工程师、音频算法工程师 通信基带算法工程师\n" +
+	        "\n" +
+	        "3目前国内外状况\n" +
+	        "目前国内从事算法研究的工程师不少，但是高级算法工程师却很少，是一个非常紧缺的专业工程师。" +
+	        "算法工程师根据研究领域来分主要有音频/视频算法处理、图像技术方面的二维信息算法处理和通信物理层、" +
+	        "雷达信号处理、生物医学信号处理等领域的一维信息算法处理。\n" +
+	        "在计算机音视频和图形图像技术等二维信息算法处理方面目前比较先进的视频处理算法：机器视觉成为此类算法研究的核心；" +
+	        "另外还有2D转3D算法(2D-to-3D conversion)，去隔行算法(de-interlacing)，运动估计运动补偿算法" +
+	        "(Motion estimation/Motion Compensation)，去噪算法(Noise Reduction)，缩放算法(scaling)，" +
+	        "锐化处理算法(Sharpness)，超分辨率算法(Super Resolution),手势识别(gesture recognition),人脸识别(face recognition)。\n" +
+	        "在通信物理层等一维信息领域目前常用的算法：无线领域的RRM、RTT，传送领域的调制解调、信道均衡、信号检测、网络优化、信号分解等。\n" +
+	        "另外数据挖掘、互联网搜索算法也成为当今的热门方向。\n" +
+	        "算法工程师逐渐往人工智能方向发展。";
             var phraseList = HanLP.extractPhrase(content, 5).ToList();
  ```
 拼音转换(https://www.hankcs.com/nlp/java-chinese-characters-to-pinyin-and-simplified-conversion-realization.html#h2-17)
@@ -250,8 +250,8 @@ string[] testCase = new string[]{
  ```
  语义距离
  ```
- String[] wordArray = new String[]
-               {
+			 String[] wordArray = new String[]
+			               {
                         "香蕉",
                         "苹果",
                         "白菜",
@@ -275,13 +275,13 @@ string[] testCase = new string[]{
                         "教师",
                         "会计",
                };
-            foreach (var a in wordArray)
-            {
-                foreach (var b in wordArray)
-                {
-                    Console.WriteLine(a + "\t" + b + "\t之间的距离是\t" + CoreSynonymDictionary.distance(a, b));
-                }
-            }
+	            foreach (var a in wordArray)
+	            {
+	                foreach (var b in wordArray)
+	                {
+	                    Console.WriteLine(a + "\t" + b + "\t之间的距离是\t" + CoreSynonymDictionary.distance(a, b));
+	                }
+	            }
  ```
 依存句法分析
 https://www.hankcs.com/nlp/parsing/neural-network-based-dependency-parser.html
