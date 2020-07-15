@@ -32,8 +32,7 @@ HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
             Console.Read();
 
 ```
- .标准分词
- .https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html
+ . 标准分词(https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html)
 ``` 
   var termList = StandardTokenizer.segment("商品和服务");
 ```
