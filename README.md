@@ -30,6 +30,12 @@ HanLp的dotNet调用,利用IKVM 调用java 开发的hanlp.jar包
             //nlpDemo.Segement_Index
             //nlpDemo.demo_use_AhoCorasickDoubleArrayTrieSegment();
             Console.Read();
+
+```
+#标准分词
+https://www.hankcs.com/nlp/segment/the-word-graph-is-generated.html
+``` 
+       var termList = StandardTokenizer.segment("商品和服务");
 ```
 hanlp功能介绍：https://www.hankcs.com/nlp/hanlp.html
  
